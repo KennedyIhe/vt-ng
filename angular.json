@@ -36,7 +36,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ClientApp",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -47,9 +47,11 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@progress/kendo-theme-bootstrap/scss/all.scss",
+              //"node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [] 
           },
           "configurations": {
             "production": {

@@ -1,0 +1,23 @@
+
+    <div class="card mb-1">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <label [for]="clientsList">Client: </label>
+              <kendo-dropdownlist 
+                #clientsList
+                [data]="clients" 
+                textField="desc"
+                valueField="code"
+                (selectionChange)="selectionChange($event)"
+                [(ngModel)]="selectedClient">
+              </kendo-dropdownlist>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <h3 class="m-0">Users Report</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+<app-value-track-grid [columns]="gridColumns" [data]="users" [loading]="loading">
+</app-value-track-grid>
