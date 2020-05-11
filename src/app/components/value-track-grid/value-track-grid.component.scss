@@ -3,6 +3,9 @@
     width: 100%;
     margin-bottom: 16px;
     .k-grid{
+        .cell-data-link {
+            color: #3377c0;
+        }
         .k-grid-header{
             background-color: #006a4e9c;
             th, td {

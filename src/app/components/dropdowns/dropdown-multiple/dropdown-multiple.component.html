@@ -1,0 +1,12 @@
+<div class="form-group">
+    <p>{{label}}</p>
+    <kendo-multiselect
+    [data]="list" 
+    textField="desc"
+    [readonly]="readonly"
+    valueField="code"        
+    (selectionChange)="onSelectChange($event)"
+    (valueChange)="onValueChange($event)"
+    [(ngModel)]="selectedItems">
+  </kendo-multiselect>
+</div>

@@ -1,0 +1,124 @@
+<div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <app-dropdown-single
+            [label]="'Client'" 
+            [list]="clients"
+            [(value)]="query.ClientId"
+            (selectChange)="clientChanged($event)">
+          </app-dropdown-single>
+          <p class="text-danger" *ngIf="showError && query.ClientId === '0'">Client is required</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <app-dropdown-multiple
+            [label]="'Lines of Business'" 
+            [readonly]="query.ClientId === '0'"
+            [list]="serviceLines"
+            [(values)]="query.ServiceLines">
+          </app-dropdown-multiple>
+          <p class="text-danger" *ngIf="showError && !query.ServiceLines.length">Select at least one service line</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <app-dropdown-multiple
+            [label]="'Savings Types'" 
+            [readonly]="query.ClientId === '0'"
+            [list]="savingsTypes"
+            [(values)]="query.SavingsTypes">
+          </app-dropdown-multiple>
+          <p class="text-danger" *ngIf="showError && !query.SavingsTypes.length">Select at least one savings type</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <app-dropdown-single
+            [label]="'Currency Code'" 
+            [list]="currencies"
+            [(value)]="query.CurrencyCode">
+          </app-dropdown-single>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <app-dropdown-single
+            [label]="'Contract Start Month'" 
+            [list]="months"
+            [(value)]="query.ContractStartMonth">
+          </app-dropdown-single>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <app-dropdown-single
+          [label]="'Contract Start Year'" 
+          [list]="years"
+          [readonly]="query.ClientId === '0'"
+          [(value)]="query.ContractStartYear">
+        </app-dropdown-single>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <app-dropdown-single
+          [label]="'Contract End Month'" 
+          [list]="months"
+          [(value)]="query.ContractEndMonth">
+        </app-dropdown-single>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <app-dropdown-single
+          [label]="'Contract End Year'" 
+          [list]="years"
+          [readonly]="query.ClientId === '0'"
+          [(value)]="query.ContractEndYear">
+        </app-dropdown-single>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <app-dropdown-single
+          [label]="'Current Period Start Month'" 
+          [list]="months"
+          [(value)]="query.PeriodStartMonth">
+        </app-dropdown-single>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <app-dropdown-single
+          [label]="'Current Period Start Year'" 
+          [list]="years"
+          [readonly]="query.ClientId === '0'"
+          [(value)]="query.PeriodStartYear">
+        </app-dropdown-single>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <app-dropdown-single
+          [label]="'Current Period End Month'" 
+          [list]="months"
+          [(value)]="query.PeriodEndMonth">
+        </app-dropdown-single>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <app-dropdown-single
+          [label]="'Current Period End Year'" 
+          [list]="years"
+          [readonly]="query.ClientId === '0'"
+          [(value)]="query.PeriodEndYear">
+        </app-dropdown-single>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <app-dropdown-single
+          [label]="'IsChild'" 
+          [isYesNo]="true"
+          [(value)]="query.IsChild">
+        </app-dropdown-single>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <app-dropdown-single
+            [label]="'Use Client Currency'" 
+            [isYesNo]="true"
+            [(value)]="query.UseClientCurrency">
+          </app-dropdown-single>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <app-dropdown-single
+            [label]="'Exclude Actuals'" 
+            [list]="exclusionMonths"
+            [(value)]="query.ExclusionMonths">
+          </app-dropdown-single>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <button type="button" class="btn btn-secondary" (click)="getSummary()">View Report</button>
+        </div>
+      </div>
+    </div>
+  </div>

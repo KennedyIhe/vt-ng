@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { GridDataResult, PageChangeEvent, DataStateChangeEvent } from '@progress/kendo-angular-grid';
 import { State, process } from '@progress/kendo-data-query';
 import { ApiService } from 'src/app/services/api.service';
+import { ColumnSetting } from 'src/app/models';
 
 @Component({
   selector: 'app-value-track-grid',
@@ -49,19 +50,6 @@ export class ValueTrackGridComponent implements OnInit {
     // this.getGridData();
     this.resetGridData();
   }
-
-  // getGridData() {
-  //   this.loadingData = true;
-  //   this.data = [];
-  //   if (this.apiPath) {
-  //     this.api.get(this.apiPath)
-  //       .subscribe((data: any[]) => {
-  //         this.loadingData = false;
-  //         this.data = data;
-  //         this.resetGridData();
-  //       });
-  //   }
-  // }
 
   resetState() {
     this.state = {

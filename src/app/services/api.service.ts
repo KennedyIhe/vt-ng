@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { AppConfig } from '../configs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +10,24 @@ import { retry, catchError } from 'rxjs/operators';
 export class ApiService {
 
   // todo move to config
-  apiUrl = 'https://localhost:44337/api/';
+  // apiUrl = 'https://localhost:44337/api/';
 
   constructor(private http: HttpClient) {
 
   }
 
   get(path: string): Observable<any> {
-    const url = this.apiUrl + path;
+    const url = AppConfig.apiUrl + path;
     return this.http.get<any>(url)
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  post(path: string, obj: any): Observable<any> {
+    const url = AppConfig.apiUrl + path;
+    return this.http.post<any>(url, obj, this.getHttpOptions())
       .pipe(
         retry(0),
         catchError(this.handleError)
@@ -34,5 +44,15 @@ export class ApiService {
     }
     window.alert(errorMessage);
     return throwError(errorMessage);
+  }
+
+  private getHttpOptions() {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Current-User-Id': ''
+      })
+    };
+    return options;
   }
 }

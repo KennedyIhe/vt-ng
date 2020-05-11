@@ -23,6 +23,11 @@
             format="{{column.format}}"
             filter="{{column.type}}"
             width="{{column.width || 200}}"
-        ></kendo-grid-column>
+            hidden="{{column.hidden}}">
+            <ng-template *ngIf="column.template" kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex" let-column="column">
+                <!-- todo: make template dynamic -->
+                <a class="cell-data-link" target="_blank" href="{{dataItem.url}}">{{dataItem[column.field]}}</a>
+            </ng-template>
+        </kendo-grid-column>
     </kendo-grid>
   </div>

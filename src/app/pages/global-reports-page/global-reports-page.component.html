@@ -1,0 +1,9 @@
+<div [ngSwitch]="reportName">
+    <app-global-reports-list *ngSwitchCase="'list'">...</app-global-reports-list>
+    <app-global-users-report *ngSwitchCase="'users'">...</app-global-users-report>
+    <app-account-summary-report *ngSwitchCase="'account-summary'">...</app-account-summary-report>
+    <app-global-fx-report *ngSwitchCase="'fx-report'"></app-global-fx-report>
+    <app-global-initiatives-report *ngSwitchCase="'initiatives'"></app-global-initiatives-report>
+    <!--default case when there are no matches -->
+    <app-global-reports-list *ngSwitchDefault>...</app-global-reports-list>
+  </div>

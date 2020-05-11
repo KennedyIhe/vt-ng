@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
 
-
-
   constructor() {
 
   }
@@ -17,8 +15,6 @@ export class AppComponent {
   ngOnInit() {
 
   }
-
-
 }
 
 

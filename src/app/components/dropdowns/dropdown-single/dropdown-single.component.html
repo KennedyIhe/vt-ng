@@ -1,0 +1,13 @@
+<div class="form-group">
+    <p>{{label}}</p>
+    <kendo-dropdownlist 
+        [data]="list" 
+        textField="desc"
+        [readonly]="readonly"
+        valueField="code"
+        (selectionChange)="onSelectChange($event)"
+        (valueChange)="onValueChange($event)"
+        [(ngModel)]="model">
+    </kendo-dropdownlist>
+</div>
+
